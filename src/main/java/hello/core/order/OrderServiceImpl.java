@@ -8,10 +8,14 @@ import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
 
-    //final은 값을 반드시 할당하도록 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    // ocp 및 dip에 위배되지 않도록 인터페이스만 선언
-    private DiscountPolicy discountPolicy;
+    //final은 값을 반드시 할당하도록 혹은 생성자를 배당하도록 설정 해야함
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
