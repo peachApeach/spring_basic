@@ -23,4 +23,20 @@ public class SingleToneTest {
         //memberService1 != memberService2
         assertThat(memberService1).isNotSameAs(memberService2);
     }
+
+    @Test
+    @DisplayName("싱글톤 패턴을 적용한 객체 사용")
+    void SingleToneServiceTest () {
+        // private으로 생성자를 막아둔 상태
+        // SingleToneService singleToneService1 = new SingleToneService(); 을 사용하면 컴파일 오류 발생
+        // 조회 호출할 때마다 같은 객체를 반환
+        SingleToneService singleToneService1 = SingleToneService.getInstance();
+        SingleToneService singleToneService2 = SingleToneService.getInstance();
+
+        System.out.println("singletonService1 = " + singleToneService1);
+        System.out.println("singletonSerivce2 = " + singleToneService2);
+
+        assertThat(singleToneService1).isSameAs(singleToneService2);
+        singleToneService1.logic();
+    }
 }
