@@ -25,4 +25,8 @@ public class OrderServiceImpl implements OrderService{
         //할인 정책 포함된 주문 내역 전달
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }

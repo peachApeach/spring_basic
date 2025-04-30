@@ -18,6 +18,7 @@ public class AppConfig {
 
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
 
@@ -31,12 +32,14 @@ public class AppConfig {
     // MemberService 구현체 설정 -> 생성자를 통해서 구현체 결정
     @Bean
     public MemberService memberService() {
+        System.out.println("call AppConfig.memberService");
         return new MemberServiceImpl(memberRepository());
     }
 
     // Order
     @Bean
     public OrderService orderService() {
+        System.out.println("call AppConfig.orderService");
         return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 }
