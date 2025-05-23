@@ -18,8 +18,7 @@ public class BeanLifeCycle {
 
     @Configuration
     static class LifeCycleConfig {
-        // 선언하고 싶지 않을 경우 destroyMethod="" 처럼 공백을 넣음
-        @Bean(initMethod = "init", destroyMethod = "close")         //빈 등록 초기화 및 소멸 메소드
+        @Bean
         public NetworkClient networkClient() {
             NetworkClient networkClient = new NetworkClient();
             networkClient.setUrl("http://hello-spring.dev");

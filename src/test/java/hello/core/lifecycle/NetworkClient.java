@@ -1,5 +1,8 @@
 package hello.core.lifecycle;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
 public class NetworkClient {
     // 가상 네트워크 클라이언트
 
@@ -34,6 +37,7 @@ public class NetworkClient {
     }
 
     // 의존 관계 주입 후 호출
+    @PostConstruct
     public void init() {
         System.out.println("afterPropertiesSet");
         connect();
@@ -41,6 +45,7 @@ public class NetworkClient {
     }
 
     // 소멸 전 콜백
+    @PreDestroy
     public void close() {
         System.out.println("destroy");
         disconnect();
